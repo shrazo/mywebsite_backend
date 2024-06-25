@@ -15,16 +15,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include 
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework.routers import DefaultRouter 
+from mainapp.views import * 
+
+router = DefaultRouter()
+router.register(r'about', AboutViewSet, basename='about_viewset')
+router.register(r'link', LinkViewSet, basename='link_viewset')
+router.register(r'research', ResearchViewSet, basename='research_viewset')
+router.register(r'publication', PublicationViewSet, basename='publication_viewset')
+router.register(r'highlight', HighlightViewSet, basename='highlight_viewset')
+router.register(r'experience', ExperienceViewSet, basename='experience_viewset')
+router.register(r'education', EducationViewSet, basename='education_viewset')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
+    # path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# if settings.DEBUG:
-#     urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
