@@ -78,6 +78,9 @@ class Highlight(models.Model):
 
     def __str__(self):
         return str(self.date) 
+    
+    class Meta: 
+        ordering = ['-date', 'pk']
 
 class Experience(models.Model):
     start_date = models.DateField()
@@ -88,6 +91,10 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.post + " : "+self.company
+    
+    class Meta: 
+        ordering = ['-start_date', 'pk']
+    
     
 
 class Education(models.Model):
