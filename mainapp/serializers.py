@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from .models import * 
-# from django_quill.drf.fields import QuillHtmlField, QuillPlainField
+from django_quill.drf.fields import QuillHtmlField, QuillPlainField
 
 class AboutSerializer(serializers.ModelSerializer):
-    # description = QuillHtmlField()
+    description = QuillHtmlField()
 
     class Meta:
         model = About
@@ -21,7 +21,7 @@ class LinkSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ResearchSerializer(serializers.ModelSerializer):
-    # description = QuillHtmlField()
+    description = QuillHtmlField()
     class Meta:
         model = Research 
         fields = '__all__'
@@ -32,7 +32,7 @@ class PublicationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HighlightSerializer(serializers.ModelSerializer):
-    # description = QuillHtmlField()
+    description = QuillHtmlField()
     class Meta:
         model = Highlight 
         fields = '__all__'

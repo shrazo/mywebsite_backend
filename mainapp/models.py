@@ -1,12 +1,12 @@
 from django.db import models
-# from django_quill.fields import QuillField
+from django_quill.fields import QuillField
 
 # Create your models here.
 class About(models.Model):
     title = models.CharField(max_length=20)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    # description = QuillField(blank=True, null=True)
+    # description = models.TextField(blank=True, null=True)
+    description = QuillField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     address = models.TextField(blank=True, null=True)
@@ -35,8 +35,8 @@ class Link(models.Model):
 
 class Research(models.Model):
     title = models.CharField(max_length=100)
-    # description = QuillField(blank=True, null=True) # models.TextField()
-    description = models.TextField(blank=True, null=True) # models.TextField()
+    description = QuillField(blank=True, null=True) # models.TextField()
+    # description = models.TextField(blank=True, null=True) # models.TextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
@@ -60,10 +60,10 @@ class Publication(models.Model):
     doi = models.CharField(max_length=100, blank=True, null=True)
     url = models.CharField(max_length=200, blank=True, null=True)
     pdf_link = models.CharField(max_length=200, blank=True, null=True)
-    # cite = QuillField(blank=True, null=True) # models.TextField(blank=True, null=True)
-    cite = models.TextField(blank=True, null=True) # models.TextField(blank=True, null=True)
-    # comments = QuillField(blank=True, null=True)# models.TextField(blank=True, null=True)
-    comments = models.TextField(blank=True, null=True)# models.TextField(blank=True, null=True)
+    cite = QuillField(blank=True, null=True) # models.TextField(blank=True, null=True)
+    # cite = models.TextField(blank=True, null=True) # models.TextField(blank=True, null=True)
+    comments = QuillField(blank=True, null=True)# models.TextField(blank=True, null=True)
+    # comments = models.TextField(blank=True, null=True)# models.TextField(blank=True, null=True)
     
     def __str__(self):
         return self.journal_name +" : " +self.title
@@ -73,8 +73,8 @@ class Publication(models.Model):
 
 class Highlight(models.Model):
     date = models.DateField()
-    # description = QuillField(blank=True, null=True) # models.TextField()
-    description = models.TextField(blank=True, null=True) # models.TextField()
+    description = QuillField(blank=True, null=True) # models.TextField()
+    # description = models.TextField(blank=True, null=True) # models.TextField()
 
     def __str__(self):
         return str(self.date) 
