@@ -4,3 +4,9 @@ from .models import *
 
 
 admin.site.register(About)
+admin.site.register(Link)
+admin.site.register(Research)
+admin.site.register(Publication)
+admin.site.register(Highlight)
+admin.site.register(Experience)
+admin.site.register(Education)
